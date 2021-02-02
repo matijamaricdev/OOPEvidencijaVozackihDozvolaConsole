@@ -134,38 +134,62 @@ namespace OOPEvidencijaVozackihDozvolaConsole
 
         private static void IspisSvihVozaca(List<Vozac> listaPostojecihVozaca)
         {
-            for(int i = 0; i < listaPostojecihVozaca.Count; i++)
+            if (listaPostojecihVozaca.Count != 0)
             {
-                Console.WriteLine(listaPostojecihVozaca[i].Ime + " " + listaPostojecihVozaca[i].Prezime);
+                for (int i = 0; i < listaPostojecihVozaca.Count; i++)
+                {
+                    Console.WriteLine(listaPostojecihVozaca[i].Ime + " " + listaPostojecihVozaca[i].Prezime);
+                }
             }
+            else
+            {
+                Console.WriteLine("Trenutno nema nijednog korisnika s vozačkom dozvolom. Ponovno pokrećem izbornik.");
+            }
+
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
         }
 
         private static void IspisSvihVozacaSaVazecomVozackomDozvolom(List<Vozac> listaPostojecihVozaca)
         {
-            for(int i = 0; i < listaPostojecihVozaca.Count; i++)
+            if (listaPostojecihVozaca.Count != 0)
             {
-                if (listaPostojecihVozaca[i].DatumIstekaVozacke > DateTime.Now.Date)
+                for (int i = 0; i < listaPostojecihVozaca.Count; i++)
                 {
-                    string formatView = String.Format("Ime i prezime: " + listaPostojecihVozaca[i].Ime + " " 
-                        + listaPostojecihVozaca[i].Prezime + "- vozačka traje do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
-                    Console.WriteLine(formatView);
+                    if (listaPostojecihVozaca[i].DatumIstekaVozacke > DateTime.Now.Date)
+                    {
+                        string formatView = String.Format("Ime i prezime: " + listaPostojecihVozaca[i].Ime + " "
+                            + listaPostojecihVozaca[i].Prezime + "- vozačka traje do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
+                        Console.WriteLine(formatView);
+                    }
                 }
             }
+            else
+            {
+                Console.WriteLine("Trenutno nema nijednog korisnika s važećom vozačkom dozvolom. Ponovno pokrećem izbornik.");
+            }
+
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
         }
 
         private static void IspisSvihVozacaSaIsteklomVozackomDozvolom(List<Vozac> listaPostojecihVozaca)
         {
-            for (int i = 0; i < listaPostojecihVozaca.Count; i++)
+            if (listaPostojecihVozaca.Count != 0)
             {
-                if (listaPostojecihVozaca[i].DatumIstekaVozacke < DateTime.Now.Date)
+                for (int i = 0; i < listaPostojecihVozaca.Count; i++)
                 {
-                    string formatView = String.Format("Ime i prezime: " + listaPostojecihVozaca[i].Ime + " "
-                    + listaPostojecihVozaca[i].Prezime + "- vozačka je trajala do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
-                    Console.WriteLine(formatView);
+                    if (listaPostojecihVozaca[i].DatumIstekaVozacke < DateTime.Now.Date)
+                    {
+                        string formatView = String.Format("Ime i prezime: " + listaPostojecihVozaca[i].Ime + " "
+                        + listaPostojecihVozaca[i].Prezime + "- vozačka je trajala do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
+                        Console.WriteLine(formatView);
+                    }
                 }
             }
+            else
+            {
+                Console.WriteLine("Trenutno nema nijednog korisnika s isteklom vozačkom dozvolom. Ponovno pokrećem izbornik.");
+            }
+
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
         }
     }
