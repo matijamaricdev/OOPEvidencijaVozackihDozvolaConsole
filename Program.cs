@@ -14,6 +14,7 @@ namespace OOPEvidencijaVozackihDozvolaConsole
 
         private static int PonudiPonovnoIzbornik(List<Vozac> listaPostojecihVozaca)
         {
+            Console.WriteLine("-------------------------------");
             int broj;
             List<string> izbornik = new List<string>() { "Dodavanje postojeceg vozaca", "Azuriranje postojeceg vozaca", "Ispis svih vozaca", "Ispis vozaca sa vazecom vozackom dozvolom",
             "Ispis vozaca sa isteklom vozackom dozvolom", "Prekid rada programa"};
@@ -25,6 +26,7 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             {
                 Console.WriteLine("{0} - {1}", i, izbornik[i]);
             }
+            Console.WriteLine("-------------------------------");
 
             // zapamti broj
             broj = Convert.ToInt32(Console.ReadLine());
@@ -70,10 +72,10 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             Console.WriteLine("Upiši OIB osobe na vozackoj dozvoli");
             double OIB = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Odaberi istek datuma vozacke dozvole");
+            Console.WriteLine("Odaberi istek datuma vozacke dozvole u formatu (Mjesec Dan, Godina)");
             DateTime datum = Convert.ToDateTime(Console.ReadLine());
 
-            Console.WriteLine("Odaberite kategoriju (broj označava broj i stavku koju ste odabrali)");
+            Console.WriteLine("Odaberite kategoriju vozačke dozvole(broj označava broj i stavku koju ste odabrali)");
             Vozac vozac = new Vozac(ime, prezime, OIB, DateTime.Now.Date, datum);
 
             for (int i = 0; i < vozac.PopisKategorija.Count; i++)
@@ -83,11 +85,6 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             broj = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Odabrali ste kategoriju: {0}", vozac.PopisKategorija[broj]);
             listaPostojecihVozaca.Add(vozac);
-            
-            foreach(var c in vozac.PopisKategorija)
-            {
-                Console.WriteLine(c);
-            }
 
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
         }
