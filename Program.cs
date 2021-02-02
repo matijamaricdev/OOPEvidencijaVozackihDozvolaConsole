@@ -91,44 +91,52 @@ namespace OOPEvidencijaVozackihDozvolaConsole
 
         private static void AzuriranjePostojecegVozaca(List<Vozac> listaPostojecihVozaca)
         {
-            Vozac azurirajOvogVozaca;
-            Console.WriteLine("Dobrodošli na izbornik ažuriranja postojećih vozača. Napišite ime i prezime vozača kojeg želite promijeniti");
-            for (int i = 0; i < listaPostojecihVozaca.Count; i++)
+            if (listaPostojecihVozaca.Count != 0)
             {
-                Console.WriteLine("{0} {1}", listaPostojecihVozaca[i].Ime, listaPostojecihVozaca[i].Prezime);
-            }
-            string imeIPrezime = Console.ReadLine();
-
-            foreach(var c in listaPostojecihVozaca)
-            {
-                if (c.Ime == imeIPrezime.Split(' ')[0] && c.Prezime == imeIPrezime.Split(' ')[1])
+                Vozac azurirajOvogVozaca;
+                Console.WriteLine("Dobrodošli na izbornik ažuriranja postojećih vozača. Napišite ime i prezime vozača kojeg želite promijeniti");
+                for (int i = 0; i < listaPostojecihVozaca.Count; i++)
                 {
-                    Console.WriteLine("Odabrali ste ažurirati vozača imena {0} i prezimena {1}", c.Ime, c.Prezime);
-                    azurirajOvogVozaca = new Vozac(c.Ime, c.Prezime, c.OIB, c.DatumIzdavanjaVozacke, c.DatumIstekaVozacke);
-                    listaPostojecihVozaca.Remove(c);
+                    Console.WriteLine("{0} {1}", listaPostojecihVozaca[i].Ime, listaPostojecihVozaca[i].Prezime);
                 }
+                string imeIPrezime = Console.ReadLine();
+
+                foreach (var c in listaPostojecihVozaca)
+                {
+                    if (c.Ime == imeIPrezime.Split(' ')[0] && c.Prezime == imeIPrezime.Split(' ')[1])
+                    {
+                        Console.WriteLine("Odabrali ste ažurirati vozača imena {0} i prezimena {1}", c.Ime, c.Prezime);
+                        azurirajOvogVozaca = new Vozac(c.Ime, c.Prezime, c.OIB, c.DatumIzdavanjaVozacke, c.DatumIstekaVozacke);
+                        listaPostojecihVozaca.Remove(c);
+                        break;
+                    }
+                }
+
+                Console.WriteLine("Upiši novo ime na vozackoj dozvoli");
+                string ime = Console.ReadLine();
+
+                Console.WriteLine("Upiši novo prezime na vozackoj dozvoli");
+                string prezime = Console.ReadLine();
+
+                Console.WriteLine("Upiši novi OIB osobe na vozackoj dozvoli");
+                double OIB = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Odaberi istek datuma vozacke dozvole u formatu (Mjesec Dan, Godina)");
+                DateTime datum = Convert.ToDateTime(Console.ReadLine());
+
+                Console.WriteLine("Odaberite novu kategoriju (broj označava broj i stavku koju ste odabrali)");
+                Vozac vozac = new Vozac(ime, prezime, OIB, DateTime.Now.Date, datum);
+
+                for (int i = 0; i < vozac.PopisKategorija.Count; i++)
+                {
+                    Console.WriteLine("{0} - {1}", i, vozac.PopisKategorija[i]);
+                }
+                listaPostojecihVozaca.Add(vozac);
             }
-
-            Console.WriteLine("Upiši novo ime na vozackoj dozvoli");
-            string ime = Console.ReadLine();
-
-            Console.WriteLine("Upiši novo prezime na vozackoj dozvoli");
-            string prezime = Console.ReadLine();
-
-            Console.WriteLine("Upiši novi OIB osobe na vozackoj dozvoli");
-            double OIB = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Odaberi istek datuma vozacke dozvole u formatu (Mjesec Dan, Godina)");
-            DateTime datum = Convert.ToDateTime(Console.ReadLine());
-
-            Console.WriteLine("Odaberite novu kategoriju (broj označava broj i stavku koju ste odabrali)");
-            Vozac vozac = new Vozac(ime, prezime, OIB, DateTime.Now.Date, datum);
-
-            for (int i = 0; i < vozac.PopisKategorija.Count; i++)
+            else
             {
-                Console.WriteLine("{0} - {1}", i, vozac.PopisKategorija[i]);
+                Console.WriteLine("Trenutno nema ni jednog korisnika s vozačkom dozvolom.");
             }
-            listaPostojecihVozaca.Add(vozac);
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
         }
 
