@@ -164,7 +164,9 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             {
                 if (listaPostojecihVozaca[i].DatumIstekaVozacke < DateTime.Now.Date)
                 {
-                    Console.WriteLine(listaPostojecihVozaca[i].Ime + " " + listaPostojecihVozaca[i].Prezime);
+                    string formatView = String.Format("Ime i prezime: " + listaPostojecihVozaca[i].Ime + " "
+                    + listaPostojecihVozaca[i].Prezime + "- vozačka je trajala do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
+                    Console.WriteLine(formatView);
                 }
             }
             PonudiPonovnoIzbornik(listaPostojecihVozaca);
