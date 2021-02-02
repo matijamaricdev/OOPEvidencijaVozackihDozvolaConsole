@@ -183,6 +183,10 @@ namespace OOPEvidencijaVozackihDozvolaConsole
                         + listaPostojecihVozaca[i].Prezime + "- vozačka je trajala do - " + listaPostojecihVozaca[i].DatumIstekaVozacke);
                         Console.WriteLine(formatView);
                     }
+                    else
+                    {
+                        Console.WriteLine("Trenutno u evidenciji nema vozača sa isteklom vozačkom dozvolom.");
+                    }
                 }
             }
             else
