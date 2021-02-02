@@ -34,7 +34,6 @@ namespace OOPEvidencijaVozackihDozvolaConsole
         public DateTime DatumIzdavanjaVozacke { get; set; }
         public DateTime DatumIstekaVozacke { get; set; }
         public List<string> PopisKategorija { get; set; } = new List<string>() { "A", "B", "C", "D", "E", "F" }; 
-        //shorthand set metoda, lako se doda nova kategorija sa PopisKategorija.Add("G") ili PopisKategorija.Remove("G")
 
         public Vozac(string ime, string prezime, double oib, DateTime datumIzdavanjaVozacke, DateTime datumIstekaVozacke)
         {

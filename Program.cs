@@ -17,13 +17,19 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             int broj;
             List<string> izbornik = new List<string>() { "Dodavanje postojeceg vozaca", "Azuriranje postojeceg vozaca", "Ispis svih vozaca", "Ispis vozaca sa vazecom vozackom dozvolom",
             "Ispis vozaca sa isteklom vozackom dozvolom", "Prekid rada programa"};
+
             Console.WriteLine("Dobrodošli na izbornik evidencije vozačkih dozvola. Odaberite što želite (broj označava broj i stavku koju ste odabrali");
+
+            //ispisi vrijednosti iz izbornika
             for (int i = 0; i < izbornik.Count; i++)
             {
                 Console.WriteLine("{0} - {1}", i, izbornik[i]);
             }
+
+            // zapamti broj
             broj = Convert.ToInt32(Console.ReadLine());
 
+            //ovisno o broju, odaberi što dalje
             switch (broj)
             {
                 case 0:
@@ -43,6 +49,9 @@ namespace OOPEvidencijaVozackihDozvolaConsole
                     break;
                 case 5:
                     Console.WriteLine("Prekidam rad programa");
+                    break;
+                default:
+                    Console.WriteLine("Niste unijeli odgovarajući broj");
                     break;
             }
 
