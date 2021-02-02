@@ -54,7 +54,6 @@ namespace OOPEvidencijaVozackihDozvolaConsole
                     Console.WriteLine("Niste unijeli odgovarajući broj");
                     break;
             }
-
             return broj;
         }
 
@@ -71,8 +70,11 @@ namespace OOPEvidencijaVozackihDozvolaConsole
             Console.WriteLine("Upiši OIB osobe na vozackoj dozvoli");
             double OIB = Convert.ToDouble(Console.ReadLine());
 
+            Console.WriteLine("Odaberi istek datuma vozacke dozvole");
+            DateTime datum = Convert.ToDateTime(Console.ReadLine());
+
             Console.WriteLine("Odaberite kategoriju (broj označava broj i stavku koju ste odabrali)");
-            Vozac vozac = new Vozac(ime, prezime, OIB, DateTime.Now.Date, DateTime.Now.Date.AddYears(5));
+            Vozac vozac = new Vozac(ime, prezime, OIB, DateTime.Now.Date, datum);
 
             for (int i = 0; i < vozac.PopisKategorija.Count; i++)
             {
